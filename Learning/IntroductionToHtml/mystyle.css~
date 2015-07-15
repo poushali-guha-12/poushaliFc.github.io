@@ -8,7 +8,7 @@ z-index:-1;
 .container
 {
 margin-left:0px;
-width:700px;
+width:750px;
 height:300px;
 background-color:#E6E6FA;
 border-radius:2px;
@@ -19,21 +19,24 @@ border-color: lightgray;
 .left
 {
 margin:20px;
-width:310px;
+width:330px;
 height:85%;
 background-color:#FFFFFF;
 float:left;
 border-radius:2px;
 z-index:1;
+padding:2px;
 }
 .right
 {
 margin:20px;
-width:310px;
+width:330px;
 height:85%;
 background-color:#FFFFFF;
 float:right;
 border-radius:2px;
+position:inline;
+padding:2px;
 z-index:1;
 }
 .tab1
@@ -49,7 +52,8 @@ border-radius:3px;
 float:left;
 z-index:0;
 border-radius:2px;
-position:
+cursor:pointer;
+
 
 }
 
@@ -67,6 +71,7 @@ border-radius:3px;
 position:inline;
 z-index:0;
 border-radius:2px;
+cursor:pointer;
 }
 .Button
 {
@@ -75,33 +80,33 @@ width: 150px;
 height:50px;
 z-index:2;
 position: absolute;
-top: 350px;
+top: 320px;
 margin-left:93px;
-
+cursor:pointer;
 width: 150px;
 height: 50px;
 }
 h3
 {
     
-    font-size: 1.00em;
+    font-size: 1.10em;
     font-family: Verdana;
     color: #909090;
 }
 p{
-font-size: .70em;
+font-size: .90em;
 font-family: Verdana;
 color: #909090;
 }
 #pid
 {
-font-size: .70em;
+font-size: .90em;
 font-family: Verdana;
 color: #6666FF;
 }
 #pid2
 {
-font-size: 1.00em;
+font-size: .90em;
 font-family: Verdana;
 color: #6600FF;
 }
