@@ -41,16 +41,16 @@ z-index:1;
 }
 .tab1
 {
-margin-top:38px;
+margin-top:20px;
 margin-left:103px;
 border-style:solid solid  none;
 border-color: lightgray;
 width:150px;
-height:55px;
+height:44px;
 background-color:#E6E6FA;
 border-radius:3px;
 float:left;
-z-index:0;
+z-index:1;
 border-radius:2px;
 cursor:pointer;
 
@@ -80,11 +80,11 @@ width: 150px;
 height:50px;
 z-index:2;
 position: absolute;
-top: 320px;
+top: 370px;
 margin-left:93px;
 cursor:pointer;
 width: 150px;
-height: 50px;
+height: 30px;
 }
 h3
 {
