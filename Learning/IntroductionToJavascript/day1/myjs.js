@@ -19,7 +19,7 @@ function show(input) {
             if ((i == 2 && j >= 4) || (i == 1)) {
 
                 num1 = Math.floor((Math.random() * 900) + 100);
-                num2 = n = Math.floor((Math.random() * 900) + 100);
+                num2 = Math.floor((Math.random() * 900) + 100);
             } else {
                 num1 = Math.floor((Math.random() * 90) + 10);
                 num2 = Math.floor((Math.random() * 90) + 10);
@@ -38,8 +38,8 @@ function show(input) {
             }
             var cell = row.insertCell(j);
 
-            cell.innerHTML = "&nbsp&nbsp" + num1 + "<br />" + sign + num2 + "<br />" + "<input type='text' name='text' id='text' onkeypress='return isNumber(event)'  onkeyup='validate(" + ans + ",this)' >";
-            ind++;
+            cell.innerHTML = "&nbsp&nbsp" + num1 + "<br />" + sign + num2 + "<br />" + "<input type='text' onkeypress='return isNumber(event)'  onkeyup='validate(" + ans + ",this)' >";
+            
 
         }
     }
