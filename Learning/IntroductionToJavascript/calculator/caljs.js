@@ -10,16 +10,16 @@ function calculate(element)
 
     
     var content = element.textContent;
-    if(content=="+" || content="-")
+    if(content=="-")
     {
         if(preNum==" ")
         {
-            preNum+=content;
+            preNum=content;
             document.getElementById("view").value = preNum;
         }
-        else if(curNum==" ")
+        if(curNum==" ")
         {
-            curNum+=content;
+            curNum=content;
             document.getElementById("view").value =curNum;
         }
     }
@@ -28,7 +28,7 @@ function calculate(element)
         document.getElementById("view").value = " ";
 	preNum=" ";
 	op=" ";
-        curNum=" ";
+    curNum=" ";
     }
     if (content == "CAN") {
         if(curNum!=" "){
@@ -105,6 +105,8 @@ function calculate(element)
 
     }
     if (content == "+" || content == "-" || content == "*" || content == "/" || content == "mod") {
+        if(preNum!=" " || curNum!=" ")
+        {
         if (op == " "){
             op = content;
 		point=" ";}
@@ -117,6 +119,7 @@ function calculate(element)
         }
         document.getElementById("view").value += op;
     }
+}
     if (content == "MC")
         mem = 0;
     if (content == "M+") {
@@ -202,7 +205,7 @@ function count(oprtr) {
                 result= parseFloat(preNum) * parseFloat(curNum);
                 break;
             case "/":
-                result= Math.floor(parseFloat(preNum) / parseFloat(curNum));
+                result= parseFloat(preNum) / parseFloat(curNum);
                 break;
             case "REM":
                 result= parseFloat(preNum) % parseFloat(curNum);
