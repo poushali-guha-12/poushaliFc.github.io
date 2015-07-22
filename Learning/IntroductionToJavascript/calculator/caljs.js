@@ -9,7 +9,21 @@ var point=" ";
 function calculate(element) 
 {
 
+    
     var content = element.textContent;
+    if(content=="+" || content="-")
+    {
+        if(preNum==" ")
+        {
+            preNum+=content;
+            document.getElementById("view").value = preNum;
+        }
+        else if(curNum==" ")
+        {
+            curNum+=content;
+            document.getElementById("view").value =curNum;
+        }
+    }
     if (content == "CLS")
     {
         document.getElementById("view").value = " ";
@@ -108,15 +122,46 @@ function calculate(element)
         mem = 0;
     if (content == "M+") {
         if (mem == 0)
-            mem = curNum;
+        {
+            if(curNum==" ")
+                    mem=preNum;
+            else
+                mem = curNum;
+        }
         else
-            result = parseInt(mem) + parseInt(curNum);
+        {
+            if(curNum==" ")
+                result=parseFloat(mem) + parseFloat(preNum);
+            else
+                result = parseFloat(mem) + parseFloat(curNum);
+            mem=result;
+
+        }   
+
+         document.getElementById("view").innerHTML = mem; 
+            
     }
-    if (content == "M-") {
+   if (content == "M-") {
         if (mem == 0)
-            mem = curNum;
+        {
+            if(curNum==" ")
+                    mem=preNum;
+            else
+                mem = curNum;
+        }
         else
-            result = parseInt(mem) - parseInt(curNum);
+        {
+            if(curNum==" ")
+                result= parseFloat(mem) - parseFloat(preNum);
+            else
+                result = parseFloat(mem) - parseFloat(curNum);
+            mem=result;
+        }
+
+        document.getElementById("view").innerHTML = mem;
+
+            
+            
     }
     if (content == "MR")
         document.getElementById("view").innerHTML = mem;

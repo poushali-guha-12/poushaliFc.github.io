@@ -1,20 +1,5 @@
-.wrapper
+table tr td
 {
-width:300px;
-height:300px;
-background-color:#505050;
-border: 1px solid black;
-border radius:4px;
-}
-td
-{
-	width:50px;
-	height:50px;
-}
-
-table
-{
-bgcolor:#000000;
-border: 1px solid black;
-border radius:2px;
+  color:white;
+  cursor: pointer;
 }
