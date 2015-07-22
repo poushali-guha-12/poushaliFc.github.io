@@ -1,6 +1,5 @@
 var mem = 0;
 var preNum = " ";
-var sucNum = " ";
 var result = " ";
 var curNum = " ";
 var op = " ";
