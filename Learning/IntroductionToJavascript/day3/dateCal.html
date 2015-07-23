@@ -1,50 +1,71 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" src="datetimejs.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="datetimejs.js"></script>
 </head>
+
 <body>
-<div class="wrapper">
-<table cellspacing="10" cellpadding="10">
-<tr>
-<td><input type="date" id="dt">&nbspTime:&nbsp
-<input type="text" id="hr" class="tb" placeholder="hh:">
-<input type="text" id="m1" class="tb" placeholder="mm:">
-<input type="text" id="int1" class="tb" placeholder="days">
-<input type="text" id="int2" class="tb"  placeholder="hours"></td>
-<td><input type="button" class="btn" id="cal1" onclick="interval();" value="INTERVAL"></td>
-<td id="diff3"></td>
-</tr> 
-<tr>
-<td><input type="text" id="hour1" class="tb" placeholder="hh:">
-<input type="text" id="min1" class="tb" placeholder="mm:">
-<input type="text" id="sec1" class="tb" placeholder="ss:"></td>
-<td><input type="text" id="hour2" class="tb" placeholder="hh:">
-<input type="text" id="min2" class="tb" placeholder="mm:">
-<input type="text" id="sec2" class="tb" placeholder="ss:"></td>
-<td><input type="button" class="btn" id="cal1" onclick="calculatetime();" value="TIME CALCULATE"></td>
-<td id="diff1"></td>
-</tr>
+    <div class="wrapper">
+        <table cellspacing="10" cellpadding="10">
+            <tr>
+                <td>
+                    <input type="date" id="dt">&nbspTime:&nbsp
+                    <input type="number" id="hr" class="tb" placeholder="hh:" max=23 min=0>
+                    <input type="number" id="m1" class="tb" placeholder="mm:" max=59 min=0>
+                </td>
+                <td>
+                    <input type="label" class="tb" id="tb2" value="Input Interval">
+                    <input type="text" id="int1" class="tb" placeholder="days">
+                    <input type="text" id="int2" class="tb" placeholder="hours">
+                </td>
+                <td>
+                    <input type="button" class="btn" id="cal1" onclick="interval();" value="INTERVAL">
+                </td>
+                <td id="diff3"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" id="hour1" class="tb" placeholder="hh:" max=23 min=0>
+                    <input type="number" id="min1" class="tb" placeholder="mm:" max=59 min=0>
+                    <input type="number" id="sec1" class="tb" placeholder="ss:" max=59 min=0>
+                </td>
+                <td>
+                    <input type="number" id="hour2" class="tb" placeholder="hh:" max=23 min=0>
+                    <input type="number" id="min2" class="tb" placeholder="mm:" max=59 min=0>
+                    <input type="number" id="sec2" class="tb" placeholder="ss:" max=59 min=0>
+                </td>
+                <td>
+                    <input type="button" class="btn" id="cal1" onclick="calculatetime();" value="TIME CALCULATE">
+                </td>
+                <td id="diff1"></td>
+            </tr>
 
-<tr>
-<td><input type="text" id="day1" class="tb" placeholder="dd">
-<input type="text" id="mon1" class="tb" placeholder="mm">
-<input type="text" id="yr1" class="tb" placeholder="yyyy"></td>
-<td><input type="text" id="day2" class="tb" placeholder="dd">
-<input type="text" id="mon2" class="tb" placeholder="mm">
-<input type="text" id="yr2" class="tb" placeholder="yyyy"></td>
-<td><input type="button" class="btn" id="cal1" onclick="calculatedate();" value="DATE CALCULATE"></td>
-<td id="diff2"></td>
-</tr>
-<tr>
+            <tr>
+                <td>
+                    <input type="number" id="day1" class="tb" placeholder="dd" max=31 min=1>
+                    <input type="number" id="mon1" class="tb" placeholder="mm" max=12 min=1>
+                    <input type="number" id="yr1" class="tb" placeholder="yyyy" max=2100 min=1900>
+                </td>
+                <td>
+                    <input type="number" id="day2" class="tb" placeholder="dd" max=31 min=1>
+                    <input type="number" id="mon2" class="tb" placeholder="mm" max=12 min=1>
+                    <input type="number" id="yr2" class="tb" placeholder="yyyy" max=2100 min=1900>
+                </td>
+                <td>
+                    <input type="button" class="btn" id="cal1" onclick="calculatedate();" value="DATE CALCULATE">
+                </td>
+                <td id="diff2"></td>
+            </tr>
+            <tr>
 
-</tr>
+            </tr>
 
 
 
-</table>
-</div>
+        </table>
+    </div>
 </body>
-</html>
 
+</html>
