@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="datetimejs.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<table cellspacing="10" cellpadding="10">
+<tr>
+<td><input type="date" id="dt">&nbspTime:&nbsp
+<input type="text" id="hr" class="tb" placeholder="hh:">
+<input type="text" id="m1" class="tb" placeholder="mm:">
+<input type="text" id="int1" class="tb" placeholder="days">
+<input type="text" id="int2" class="tb"  placeholder="hours"></td>
+<td><input type="button" class="btn" id="cal1" onclick="interval();" value="INTERVAL"></td>
+<td id="diff3"></td>
+</tr> 
+<tr>
+<td><input type="text" id="hour1" class="tb" placeholder="hh:">
+<input type="text" id="min1" class="tb" placeholder="mm:">
+<input type="text" id="sec1" class="tb" placeholder="ss:"></td>
+<td><input type="text" id="hour2" class="tb" placeholder="hh:">
+<input type="text" id="min2" class="tb" placeholder="mm:">
+<input type="text" id="sec2" class="tb" placeholder="ss:"></td>
+<td><input type="button" class="btn" id="cal1" onclick="calculatetime();" value="TIME CALCULATE"></td>
+<td id="diff1"></td>
+</tr>
+
+<tr>
+<td><input type="text" id="day1" class="tb" placeholder="dd">
+<input type="text" id="mon1" class="tb" placeholder="mm">
+<input type="text" id="yr1" class="tb" placeholder="yyyy"></td>
+<td><input type="text" id="day2" class="tb" placeholder="dd">
+<input type="text" id="mon2" class="tb" placeholder="mm">
+<input type="text" id="yr2" class="tb" placeholder="yyyy"></td>
+<td><input type="button" class="btn" id="cal1" onclick="calculatedate();" value="DATE CALCULATE"></td>
+<td id="diff2"></td>
+</tr>
+<tr>
+
+</tr>
+
+
+
+</table>
+</div>
+</body>
+</html>
+

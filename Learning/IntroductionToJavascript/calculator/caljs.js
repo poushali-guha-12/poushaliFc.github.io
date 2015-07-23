@@ -4,6 +4,8 @@ var result = " ";
 var curNum = " ";
 var op = " ";
 var point=" ";
+var signPre=" ";
+var signCur=" ";
 
 function calculate(element) 
 {
@@ -14,13 +16,13 @@ function calculate(element)
     {
         if(preNum==" ")
         {
-            preNum=content;
-            document.getElementById("view").value = preNum;
+            signPre="-";
+            document.getElementById("view").value += content;
         }
-        if(curNum==" ")
+        if(curNum==" " && op!=" ")
         {
-            curNum=content;
-            document.getElementById("view").value =curNum;
+            signCur="-";
+            document.getElementById("view").value+= content;
         }
     }
     if (content == "CLS")
@@ -194,7 +196,12 @@ if (content == "PER") {
     
 }
 function count(oprtr) {
+    if(signPre=="-")
+        preNum*=-1;
+    if(signCur=="-")
+        curNum*=-1;
         switch (oprtr) {
+
             case "+":
                 result= parseFloat(preNum) + parseFloat(curNum);
                 break;
