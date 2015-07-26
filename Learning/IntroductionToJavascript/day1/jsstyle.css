@@ -1,0 +1,13 @@
+.container {
+    position: absolute;
+    left: 100 px;
+    top: 100 px;
+}
+input[type = 'text'] {
+    display: block;
+    margin: 0;
+    border: 2px solid black;
+    width: 40px;
+    direction: rtl;
+
+}
