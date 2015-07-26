@@ -1,4 +1,9 @@
 (function container() {
+    var mem = 0;
+    var secNum = "",
+        firNum = "",
+        op = "";
+    var val = [];
     (function createRadio() {
         var radioVal = ["rdo1", "rdo2", "rdo3"];
         var lbl = ["Basic Calculator ", " Date/Time Calculator ", " EMI Calculator"];
@@ -36,7 +41,7 @@
                 ["CL", "AC", "RM", "%"],
                 ["MC", "M+", "M-", "MR"]
             ];
-            
+
 
             var show = document.createElement('TABLE');
             show.border = "5";
@@ -47,9 +52,9 @@
             txt.type = "text";
             txt.id = "view";
             show.appendChild(txt);
-            document.getElementById("view").style.width="117px";
+            document.getElementById("view").style.width = "117px";
 
-           
+
         } else {
             if (document.getElementById("rdo3").checked) {
                 var cellContent = [
@@ -69,7 +74,8 @@
                         ["hh", 0, 23],
                         ["mm", 0, 59],
                         ["ss", 0, 59]
-                    ]
+                    ],
+
                 ];
                 var cellId = [
                     [
@@ -81,7 +87,14 @@
                         ["hr2", "min2", "sec2"]
                     ]
                 ];
-                var func = [calculatedate, calculatetime]; //, interval];
+                var intCellVal = [
+                    ["hh", 0, 23],
+                    ["mm", 0, 59],
+                    ["days"],
+                    ["h0urs", 0, 23]
+                ];
+                var intCellId = ["hr", "m1", "int1", "int2"];
+                var func = [calculatedate, calculatetime, interval];
             }
         }
 
@@ -92,7 +105,7 @@
         Table.appendChild(tableBody);
         var rowLength = cellContent.length;
         var clmLength = cellContent[0].length;
-        console.log(rowLength + " " + clmLength);
+        //  console.log(rowLength + " " + clmLength);
         for (i = 0; i < rowLength; i++) {
             var tr = document.createElement('TR');
             tableBody.appendChild(tr);
@@ -107,22 +120,24 @@
                         var textBox = document.createElement('input');
                         textBox.type = "text";
                         textBox.id = cellContent[i][1];
-                        console.log(textBox.id);
+                        // console.log(textBox.id);
                         td.appendChild(textBox);
                     }
                 } else {
                     if (document.getElementById("rdo1").checked) {
 
                         Table.border = "5";
-            Table.cellpadding = "20";
-            Table.cellspacing = "20";
-                      td.textContent = cellContent[i][j];
-                         td.addEventListener("click", function() {
-                             calculate(this.textContent);
-                       //  td.addEventListener=("click",this.calculate);
+                        Table.cellpadding = "20";
+                        Table.cellspacing = "20";
+                        td.textContent = cellContent[i][j];
+                        td.addEventListener("click", function() {
+                            calculate(this.textContent);
+
+
                         });
 
                     } else if (document.getElementById("rdo2").checked) {
+
                         if (j == 2) {
                             var btn = document.createElement('input');
                             btn.type = "button";
@@ -138,7 +153,7 @@
                                 input.min = cellContent[i][k][1];
                                 input.max = cellContent[i][k][2];
                                 input.id = cellId[i][j][k];
-                                console.log(input.id);
+                                //console.log(input.id);
                                 td.appendChild(input);
                             }
                         }
@@ -208,184 +223,123 @@
         }
     }
 
-    
 
-function calculate(element) 
-{
 
-    console.log(element);
-    //console.log(document.getElementById("view").value);
-    var mem = 0;
-var preNum = " ";
-var sucNum = " ";
-var result = " ";
-var curNum = " ";
-var op = " ";
-var point=" ";
-    var content = element;
-    if (content == "CLS")
-    {
-        document.getElementById("view").value = " ";
-	preNum=" ";
-	op=" ";
-        curNum=" ";
-    }
-    if (content == "CAN") {
-        if(curNum!=" "){
 
-		curNum = " ";
-	
-        document.getElementById("view").value = preNum + op;
-    }
-	else
-	{
-		if(op!=" ")
-		{
-			op=" ";
-			document.getElementById("view").value = preNum;
-		}
-		else
-		{
-			if(preNum!=" ")
-			{
-				preNum=" ";
-				document.getElementById("view").value =" ";
-			}
-		}
-	}
-}
-    
-    if(content==".")
-    {
-	if(point==" ")
-        {
-		if(op==" " && result==" ")
-	    {
-		preNum+=content;
-		point=".";
-	       document.getElementById("view").value += content;
-	    }
-		if(op==" " && result!=" ")
-	    {
-		preNum=content;
-		point=".";
-		document.getElementById("view").value=content;
-		result=" ";
-	    }
-	    if(op!=" "	)
-	   {
-		curNum+=content;
-		point=".";
-		document.getElementById("view").value+=content;
-           }
-	}
-    }
-	    
-		
-    for (i = 0; i <= 9; i++) {
-        if (i == content) {
-            if(op==" " && result==" ")
-	    {
-		preNum+=content;
-	       document.getElementById("view").value += content;
-	    }
-            if(op==" " && result!=" ")
-	    {
-		preNum=content;
-		document.getElementById("view").value=content;
-		result=" ";
-	    }
-	    if(op!=" "	)
-	   {
-		curNum+=content;
-		document.getElementById("view").value+=content;
-           }
-            
+    function calculate(element) {
+
+        var content = element;
+        if (isdigit(content)) {
+            document.getElementById("view").value += content;
+            var l = val.length;
+            if (l == 0)
+                val.push(content);
+            else {
+                if (!isop(val[l - 1]))
+                    val[l - 1] += content;
+                else
+                    val.push(content);
+            }
+        }
+        if (isop(content)) {
+            document.getElementById("view").value += content;
+
+            val.push(content);
+        }
+        if (content == "=") {
+            i = 0;
+
+
+            while (i < val.length) {
+                var token = val[i];
+                if (isop(token)) {
+                    if (ishigh(token)) {
+                        var ans = count(val[i - 1], token, val[i + 1]);
+                        val[i - 1] = ans;
+                        val.splice(i, 2);
+                        i = i - 1;
+                    }
+
+
+                }
+
+
+                i++;
+
+            }
+            document.getElementById("view").value = val[0];
+        }
+        if (content == "CL") {
+            var l = val.length;
+            val.pop();
+            document.getElementById("view").value = val;
+        }
+        if (content == "AC") {
+            val = [];
+            document.getElementById("view").value = "";
+
         }
 
-    }
-    if (content == "+" || content == "-" || content == "*" || content == "/" || content == "mod") {
-        if (op == " "){
-            op = content;
-		point=" ";}
-        else {
-            count(op);
-            
-            op = content;
-            point=" ";
- 	    result=" ";
+        function isdigit(digit) {
+            for (i = 0; i <= 9; i++) {
+                if (digit == i)
+                    return true;
+            }
         }
-        document.getElementById("view").value += op;
-    }
-    if (content == "MC")
-        mem = 0;
-    if (content == "M+") {
-        if (mem == 0)
-            mem = curNum;
-        else
-            result = parseInt(mem) + parseInt(curNum);
-    }
-    if (content == "M-") {
-        if (mem == 0)
-            mem = curNum;
-        else
-            result = parseInt(mem) - parseInt(curNum);
-    }
-    if (content == "MR")
-        document.getElementById("view").innerHTML = mem;
 
-    if (content == "=") {
-        count(op);
-    point=" ";
-    
-    op = " ";
-    
-
-}
-if (content == "PER") {
-    if (curNum == " ")
-{
-        result = preNum / 100;
-	document.getElementById("view").value = result;
-}
-    else {
-        curNum = (curNum * preNum) / 100;
-        count(op);
-	op=" ";
-}
-
-
-        
-    }
-    
-
-function count(oprtr) {
-        switch (oprtr) {
-            case "+":
-                result= parseFloat(preNum) + parseFloat(curNum);
-                break;
-            case "-":
-                result= parseFloat(preNum) - parseFloat(curNum);
-                break;
-            case "*":
-                result= parseFloat(preNum) * parseFloat(curNum);
-                break;
-            case "/":
-                result= Math.floor(parseFloat(preNum) / parseFloat(curNum));
-                break;
-            case "REM":
-                result= parseFloat(preNum) % parseFloat(curNum);
-                break;
-
+        function ishigh(token) {
+            var pre = [
+                ["+", 2],
+                ["-", 1],
+                ["*", 3],
+                ["/", 4],
+                ["RM", 0]
+            ];
+            for (j = 0; j < val.length; j++) {
+                if (isop(val[j])) {
+                    for (k = 0; k <= 4; k++) {
+                        if (pre[k][0] == token)
+                            var tokenPre = pre[k][1];
+                        if (pre[k][0] == val[j])
+                            temp = pre[k][1];
+                        if (tokenPre > temp) {
+                            max = tokenPre;
+                        } else
+                            max = temp;
+                    }
+                }
+            }
+            if (max == tokenPre)
+                return true;
 
         }
-	preNum = result;
-    curNum = " ";
-    document.getElementById("view").value = result;
 
-    }    
+        function count(num1, oprtr, num2) {
+            switch (oprtr) {
+                case "+":
+                    return (parseFloat(num1) + parseFloat(num2));
+                    break;
+                case "-":
+                    return (parseFloat(num1) - parseFloat(num2));
+                    break;
+                case "*":
+                    return (parseFloat(num1) * parseFloat(num2));
+                    break;
+                case "/":
+                    return (parseFloat(num1) / parseFloat(num2));
+                    break;
+                case "RM":
+                    return (parseFloat(num1) % parseFloat(num2));
+                    break;
 
-}
+            }
+        }
+
+        function isop(op) {
+            if (op == "+" || op == "-" || op == "*" || op == "/" || op == "RM")
+                return true;
+        }
+    }
 
     function calculatetime() {
         var s1 = (document.getElementById("sec1").value);
@@ -464,13 +418,31 @@ function count(oprtr) {
 
     // function createElement(type,parent,att{min,max,att,id,elm,name})
     // {
-    // 	var elment=document.createElement(elm);
-    // 	element.type=type;
-    // 	element.min=min;
-    // 	element.max=max;
-    // 	element.id=id;
-    // 	parent.appendChild(element);
+    //  var elment=document.createElement(elm);
+    //  element.type=type;
+    //  element.min=min;
+    //  element.max=max;
+    //  element.id=id;
+    //  parent.appendChild(element);
     // }
 
 
 })();
+
+function interval() {
+
+    var tm = parseInt(document.getElementById("int2").value);
+    var curTm = document.getElementById("hr").value;
+    var intrvl = tm + curTm;
+    if (intrvl > 24) {
+        var days = Math.floor(intrvl / 24);
+        var hrs = intrvl % 24;
+    }
+    var min = document.getElementById("m1").value;
+    days += parseInt(document.getElementById("int1").value);
+    document.getElementById("dt").stepUp(days);
+    document.getElementById("diff3").innerHTML = "The will be " + document.getElementById("dt").value + " and time will be " + hrs + " hours " + min + " minutes "
+
+
+
+}
