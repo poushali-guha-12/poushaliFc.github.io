@@ -1,6 +1,7 @@
 var num1 = 0;
 var num2 = 0;
 var ans = 0;
+var sign;
 
 function show(input) {
 
@@ -31,13 +32,12 @@ function show(input) {
                     num2 = temp;
                 }
                 ans = (num1 - num2);
-                var sign = "-";
+                sign = "-";
             } else {
                 ans = (num1 + num2);
-                var sign = "+";
+                 sign = "+";
             }
             var cell = row.insertCell(j);
-
             cell.innerHTML = "&nbsp&nbsp" + num1 + "<br />" + sign + num2 + "<br />" + "<input type='text' onkeypress='return isNumber(event)'  onkeyup='validate(" + ans + ",this)' >";
             
 

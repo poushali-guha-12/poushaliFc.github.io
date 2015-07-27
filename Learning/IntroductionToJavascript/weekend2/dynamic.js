@@ -86,11 +86,11 @@
                     [
                         ["hr1", "min1", "sec1"],
                         ["hr2", "min2", "sec2"]
-                    ],
-                    [
-                    ["dt","hr","m1"],
-                    ["tb2","int1","int2"]
                     ]
+                    // [
+                    // ["dt","hr","m1"],
+                    // ["tb2","int1","int2"]
+                    // ]
                 ];
                 // var intCellVal = [
                 //     ["hh", 0, 23],
@@ -111,7 +111,8 @@
         var rowLength = cellContent.length;
         var clmLength = cellContent[0].length;
        if (document.getElementById("rdo2").checked) 
-       		rowLength++;
+       		rowLength=rowLength+1;
+       	console.log(rowLength);
         for (i = 0; i < rowLength; i++) {
             var tr = document.createElement('TR');
             tableBody.appendChild(tr);
@@ -143,12 +144,12 @@
                         });
 
                     } else if (document.getElementById("rdo2").checked) {
-                    	if(i==2){
+                    	if(i==1){
                     		if(j==0){
-                    			var date=document.createElement('input');
-                    			date.type="date";
-                    			date.id="dt";
-                    			td.appendChild(date);
+                    			var dat=document.createElement('input');
+                    			dat.type="date";
+                    			dat.id="dt";
+                    			td.appendChild(dat);
                     			
                     			var hh=document.createElement("input");
                     			hh.type="number";
@@ -161,7 +162,7 @@
                     			var mm=document.createElement("input");
                     			mm.type="number";
                     			mm.placeholder="mm";
-                    			mm.id="hr";
+                    			mm.id="m1";
                     			mm.min=0;
                     			mm.max=59;
                     			td.appendChild(mm);
@@ -210,11 +211,14 @@
                                 td.appendChild(input);
                             }
                         }
+ 
 
                     }
+                   
                 }
-                tr.appendChild(td);
+               tr.appendChild(td);
             }
+             
         }
         if (document.getElementById("rdo3").checked) {
             var btn = document.createElement('input');

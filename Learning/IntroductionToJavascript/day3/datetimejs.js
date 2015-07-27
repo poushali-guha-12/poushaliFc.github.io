@@ -73,14 +73,15 @@ function interval() {
     var tm = parseInt(document.getElementById("int2").value);
     var curTm = document.getElementById("hr").value;
     var intrvl = tm + curTm;
+    var days,hrs;
     if (intrvl > 24) {
-        var days = Math.floor(intrvl / 24);
-        var hrs = intrvl % 24;
+         days = Math.floor(intrvl / 24);
+        hrs = intrvl % 24;
     }
     var min = document.getElementById("m1").value;
     days += parseInt(document.getElementById("int1").value);
     document.getElementById("dt").stepUp(days);
-    document.getElementById("diff3").innerHTML = "The will be " + document.getElementById("dt").value + " and time will be " + hrs + " hours " + min + " minutes "
+    document.getElementById("diff3").innerHTML = "The will be " + document.getElementById("dt").value + " and time will be " + hrs + " hours " + min + " minutes ";
 
 
 
