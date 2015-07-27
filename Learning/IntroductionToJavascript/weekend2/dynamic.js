@@ -74,7 +74,8 @@
                         ["hh", 0, 23],
                         ["mm", 0, 59],
                         ["ss", 0, 59]
-                    ],
+                    ]
+
 
                 ];
                 var cellId = [
@@ -85,14 +86,18 @@
                     [
                         ["hr1", "min1", "sec1"],
                         ["hr2", "min2", "sec2"]
+                    ],
+                    [
+                    ["dt","hr","m1"],
+                    ["tb2","int1","int2"]
                     ]
                 ];
-                var intCellVal = [
-                    ["hh", 0, 23],
-                    ["mm", 0, 59],
-                    ["days"],
-                    ["h0urs", 0, 23]
-                ];
+                // var intCellVal = [
+                //     ["hh", 0, 23],
+                //     ["mm", 0, 59],
+                //     ["days"],
+                //     ["h0urs", 0, 23]
+                // ];
                 var intCellId = ["hr", "m1", "int1", "int2"];
                 var func = [calculatedate, calculatetime, interval];
             }
@@ -105,7 +110,8 @@
         Table.appendChild(tableBody);
         var rowLength = cellContent.length;
         var clmLength = cellContent[0].length;
-        //  console.log(rowLength + " " + clmLength);
+       if (document.getElementById("rdo2").checked) 
+       		rowLength++;
         for (i = 0; i < rowLength; i++) {
             var tr = document.createElement('TR');
             tableBody.appendChild(tr);
@@ -137,6 +143,53 @@
                         });
 
                     } else if (document.getElementById("rdo2").checked) {
+                    	if(i==2){
+                    		if(j==0){
+                    			var date=document.createElement('input');
+                    			date.type="date";
+                    			date.id="dt";
+                    			td.appendChild(date);
+                    			
+                    			var hh=document.createElement("input");
+                    			hh.type="number";
+                    			hh.placeholder="hh";
+                    			hh.id="hr";
+                    			hh.min=0;
+                    			hh.max=23;
+                    			td.appendChild(hh);
+
+                    			var mm=document.createElement("input");
+                    			mm.type="number";
+                    			mm.placeholder="mm";
+                    			mm.id="hr";
+                    			mm.min=0;
+                    			mm.max=59;
+                    			td.appendChild(mm);
+
+
+
+                    		}
+
+                    		if(j==1){
+                    			var tnode = document.createTextNode("Input Interval");
+            					td.appendChild(tnode);
+            					
+                    			var days=document.createElement("input");
+                    			days.type="text";
+                    			days.placeholder="days";
+                    			days.id="int1";
+                    			td.appendChild(days);
+
+                    			var hour=document.createElement("input");
+                    			hour.type="number";
+                    			hour.placeholder="hh";
+                    			hour.id="int2";
+                    			hour.min=0;
+                    			hour.max=23;
+                    			td.appendChild(hour);
+
+                    		}
+                    	}
 
                         if (j == 2) {
                             var btn = document.createElement('input');
