@@ -144,7 +144,7 @@
                         });
 
                     } else if (document.getElementById("rdo2").checked) {
-                    	if(i==1){
+                    	if(i==2){
                     		if(j==0){
                     			var dat=document.createElement('input');
                     			dat.type="date";
@@ -199,8 +199,8 @@
                             btn.addEventListener("click", func[i]);
                             td.appendChild(btn);
 
-                        } else {
-                            for (k = 0; k <= 2; k++) {
+                        } else if(i!=2){
+                            for (k = 0; k <3; k++) {
                                 var input = document.createElement('input');
                                 input.type = "number";
                                 input.placeholder = cellContent[i][k][0];
@@ -498,7 +498,9 @@ function interval() {
     var min = document.getElementById("m1").value;
     days += parseInt(document.getElementById("int1").value);
     document.getElementById("dt").stepUp(days);
-    document.getElementById("diff3").innerHTML = "The will be " + document.getElementById("dt").value + " and time will be " + hrs + " hours " + min + " minutes "
+    var tnode = document.createTextNode("The date will be " + document.getElementById("dt").value + " and time will be " + hrs + " hours " + min + " minutes ");
+        document.body.appendChild(tnode);
+    //document.getElementById("diff3").innerHTML = "The will be " + document.getElementById("dt").value + " and time will be " + hrs + " hours " + min + " minutes "
 
 
 
