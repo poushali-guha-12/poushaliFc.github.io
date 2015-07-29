@@ -18,8 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  		$emailErr="email is required";
 		$flag=0;
 	}
- 	else
+ 	else{
 		$email=$_POST["email"];
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL) === true) 
+			$emailErr="not a valid email address";
+ 	}
 
  	if(empty($_POST["fd"])){
  		$fdErr="feedback is required";
@@ -27,8 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  	}
  	else{
 		$fd=$_POST["fd"];
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL) === true) 
-			$emailErr="not a valid email address";
+		
  	}
 
  	if(empty($_POST["phn"])){
@@ -74,19 +76,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if($flag==1)
  	{
 		$fp=fopen("myvalue.csv","a");
-		fwrite($fp,$name);
- 		fwrite($fp,$email);
-		fwrite($fp,$fd);
-		fwrite($fp,$phn);
- 		fwrite($fp,$sex);
+		fputcsv($fp,explode(',',$name));
+ 		fputcsv($fp,explode(',',$email));
+		fputcsv($fp,explode(','$fd));
+		fputcsv($fp,explode(','$phn));
+ 		fputcsv($fp,explode(',',$sex));
 	 	foreach($intr as $value){
 			if($value){
- 	 			fwrite($fp,$value);
+ 	 			fputcsv($fp,explode(',',$value));
 	 		}
 
 	 }
-	 fwrite($fp,$country);
- 		fwrite($fp,$st);
+	    fputcsv($fp,explode(','$country));
+ 		fputcsv($fp,explode(',',$st));
 	fclose($fp);
 		}
 		else{
