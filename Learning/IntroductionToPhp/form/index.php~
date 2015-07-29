@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    
+    <script src="fnctn.js"></script>
+    <div class="default">
+        <div class="news" onclick="tab1()" id="t1">Subscribe</div>
+        <div class="sub" onclick="tab2()" id="t2">News</div>
+        <div class="container">
+            <div class="left" id="lft">
+                <h3>Welcome</h3>
+                <p id="pid1">Simple and effective Angularjs binding for FusionCharts javascript Charting Libary.Simple and effective Angularjs binding for FusionCharts javascript Charting Libary.</p>
+                <p id="pid2">Angularjs binding for FusionCharts javascript Charting Library</p>
+                <div class="button" id="btn"><font color="white" align "centre">Learn More</font></div>
+            </div>
+            <div class="right" id="rght">
+                <h3>Latest News</h3>
+                <img src="image.jpg">
+            </div>
+            <div class="merge" id="frm">
+                <form name="subscribe" action="myphp.php" method="post" >
+                    <table>
+                        <tr>
+                            <td>Name:
+                                <input type="text" name="name" >
+                            </td>
+                            <td>Country:
+                                <select id="country" onchange="showState(this.value)" >
+                                    <option value="select country">select country</option>
+                                    <option value="india">India</option>
+                                    <option value="usa">USA</option>
+                                </select>
+                                </td>
+                            <td>State:
+                                <select id="state" disabled >
+                                    <option value="state">state</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email:
+                                <input type="email" name="email">
+                            </td>
+                            <td>feedback:
+                                <input type="text" name="fd">
+                            </td>
+                            <td>Contact:
+                                <input type="text" nmae="phn" maxlength="10">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>sex:
+                                <input type="radio" value="male" name="sex" >male
+                                <input type="radio" value="female" name="sex" >female
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Interested in:
+                                <input type="checkbox" name="hobby" value="football" id="football" onchange="showOption(this.id)">football
+                                <input type="checkbox" name="hobby" value="movie" id="movie" onchange="showOption(this.id)">movie</td>
+                                <td>
+                                <input type="checkbox" name="hobby" value="reading" id="read" onchange="showOption(this.id)">reading
+                            </td>
+                        </tr>
+
+                        <dialog id="dialog1">
+                            <input type="checkbox" value="MU" id="mu">MU
+                            <input type="checkbox" value="B" id="B">Bercalona
+                            <input type="checkbox" value="RM" id="rm">RealMadrid
+                            <input type="checkbox" value="mc" id="mcty">ManCity
+                            <input type="checkbox" value="chelsea" id="chelsea">chelsea
+                        </dialog>
+
+                        <dialog id="dialog2">
+                            <input type="checkbox" value="comedy" id="comedy">comedy
+                            <input type="checkbox" value="horror" id="horror">horror
+                            <input type="checkbox" value="fiction" id="fiction">fiction
+                            <input type="checkbox" value="adventure" id="adventure">adventure
+                            <input type="checkbox" value="action" id="action">action
+                        </dialog>
+
+
+                        <dialog id="dialog3">
+                            <input type="checkbox" value="drama" id="drama">drama
+                            <input type="checkbox" value="satire" id="satire">satire
+                            <input type="checkbox" value="science fiction" id="science fiction">scince fiction
+                            <input type="checkbox" value="horror" id="horror">horror
+                            <input type="checkbox" value="travel" id="travel">travel
+                        </dialog>
+                    </table>
+                    <button type="submit" value="Submit">SUBMIT</button>
+
+                    <button type="reset" value="Reset">RESET</button>
+                </form>
+            </div>
+        </div>
+</body>
+
+</html>

@@ -87,17 +87,9 @@
                         ["hr1", "min1", "sec1"],
                         ["hr2", "min2", "sec2"]
                     ]
-                    // [
-                    // ["dt","hr","m1"],
-                    // ["tb2","int1","int2"]
-                    // ]
+                    
                 ];
-                // var intCellVal = [
-                //     ["hh", 0, 23],
-                //     ["mm", 0, 59],
-                //     ["days"],
-                //     ["h0urs", 0, 23]
-                // ];
+                
                 var intCellId = ["hr", "m1", "int1", "int2"];
                 var func = [calculatedate, calculatetime, interval];
             }
@@ -112,7 +104,7 @@
         var clmLength = cellContent[0].length;
        if (document.getElementById("rdo2").checked) 
        		rowLength=rowLength+1;
-       	console.log(rowLength);
+       	
         for (i = 0; i < rowLength; i++) {
             var tr = document.createElement('TR');
             tableBody.appendChild(tr);
@@ -127,7 +119,7 @@
                         var textBox = document.createElement('input');
                         textBox.type = "text";
                         textBox.id = cellContent[i][1];
-                        // console.log(textBox.id);
+                        
                         td.appendChild(textBox);
                     }
                 } else {
@@ -207,7 +199,7 @@
                                 input.min = cellContent[i][k][1];
                                 input.max = cellContent[i][k][2];
                                 input.id = cellId[i][j][k];
-                                //console.log(input.id);
+                                
                                 td.appendChild(input);
                             }
                         }
@@ -312,6 +304,7 @@
                 if (isop(token)) {
                     if (ishigh(token)) {
                         var ans = count(val[i - 1], token, val[i + 1]);
+                        console.log(ans);
                         val[i - 1] = ans;
                         val.splice(i, 2);
                         i = i - 1;
@@ -324,7 +317,7 @@
                 i++;
 
             }
-            document.getElementById("view").value = val[0];
+            document.getElementById("view").value =val[0];
         }
         if (content == "CL") {
             var l = val.length;
@@ -352,14 +345,17 @@
                 ["/", 4],
                 ["RM", 0]
             ];
+            for(j=0;j<=4;j++){
+            	if(token==pre[j][0])
+            		var tokenPre = pre[j][1];
+            }
             for (j = 0; j < val.length; j++) {
                 if (isop(val[j])) {
                     for (k = 0; k <= 4; k++) {
-                        if (pre[k][0] == token)
-                            var tokenPre = pre[k][1];
+                        
                         if (pre[k][0] == val[j])
                             temp = pre[k][1];
-                        if (tokenPre > temp) {
+                        if (tokenPre >= temp) {
                             max = tokenPre;
                         } else
                             max = temp;
@@ -500,7 +496,7 @@ function interval() {
     document.getElementById("dt").stepUp(days);
     var tnode = document.createTextNode("The date will be " + document.getElementById("dt").value + " and time will be " + hrs + " hours " + min + " minutes ");
         document.body.appendChild(tnode);
-    //document.getElementById("diff3").innerHTML = "The will be " + document.getElementById("dt").value + " and time will be " + hrs + " hours " + min + " minutes "
+    
 
 
 
