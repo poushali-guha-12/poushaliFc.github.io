@@ -84,12 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  	else
 		$country=$_POST["country"];
 		
-	if(empty($_POST["st"])){
- 		$stErr="state is required";
- 		$flag=0;
- 	}
- 	else
-	$st=$_POST["st"];
+	
 
 	
 	if($flag==1)

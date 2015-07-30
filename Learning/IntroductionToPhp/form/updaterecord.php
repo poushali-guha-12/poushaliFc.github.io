@@ -16,11 +16,7 @@
                                     <option value="usa" >USA</option>
                                 </select>
                                 </td>
-                            <td>State:
-                                <select id="state" disabled name="st">
-                                    <option value="state">state</option>
-                                </select>
-                            </td>
+                            
                         </tr>
                         <tr>
                             <td>Email:
