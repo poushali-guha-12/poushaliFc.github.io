@@ -78,8 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$fp=fopen("myvalue.csv","a");
 		fputcsv($fp,explode(',',$name));
  		fputcsv($fp,explode(',',$email));
-		fputcsv($fp,explode(','$fd));
-		fputcsv($fp,explode(','$phn));
+		fputcsv($fp,explode(',',$fd));
+		fputcsv($fp,explode(',',$phn));
  		fputcsv($fp,explode(',',$sex));
 	 	foreach($intr as $value){
 			if($value){
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	 		}
 
 	 }
-	    fputcsv($fp,explode(','$country));
+	    fputcsv($fp,explode(',',$country));
  		fputcsv($fp,explode(',',$st));
 	fclose($fp);
 		}
