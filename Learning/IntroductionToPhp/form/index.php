@@ -32,8 +32,8 @@
                             <td>Country:
                                 <select id="cntry" onchange="showState(this.value)" name="country">
                                     <option value="select country">select country</option>
-                                    <option value="india">India</option>
-                                    <option value="usa">USA</option>
+                                    <option value="india" <?php if($country=="india") echo "selected";?>>India</option>
+                                    <option value="usa" <?php if($country=="usa") echo "selected";?>>USA</option>
                                 </select>
                                 </td>
                             <td>State:
@@ -70,7 +70,7 @@
 
                        
                     </table>
-                    <button type="submit" value="Submit">SUBMIT</button>
+                    <button type="submit" value="Submit" name="sub_butn">SUBMIT</button>
 
                     <button type="reset" value="Reset">RESET</button>
                 </form>

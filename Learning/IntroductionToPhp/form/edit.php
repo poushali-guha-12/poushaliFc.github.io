@@ -1,4 +1,4 @@
- <?php
+<?php
 
 
  $servername = "localhost";
@@ -101,23 +101,24 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO subscription (name,email,mobile,gender,country,state,feedback)
-VALUES ('$name','$email','$phn','$sex','$country','$st','$fd')";
+$sql = "UPDATE subscription SET name=$name, mobile=$mobile, gender=$sex, country=$country, feedback=$fd where email=$email";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . mysqli_error($conn);
+}
+
 
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
-		$fp=fopen("myvalue.csv","a");
-		fputcsv($fp,explode(',',$name));
- 		fputcsv($fp,explode(',',$email));
-		fputcsv($fp,explode(',',$fd));
-		fputcsv($fp,explode(',',$phn));
- 		fputcsv($fp,explode(',',$sex));
+		
 	 	foreach($intr as $value){
 			if($value){
- 	 			fputcsv($fp,explode(',',$value));
+ 	 		
  	 			$sql = "INSERT INTO hobby (email,hobby)
                 VALUES ('$email','$value')";
 
@@ -130,9 +131,7 @@ if (mysqli_query($conn, $sql)) {
 	 		mysqli_close($conn);
 
 	 }
-	    fputcsv($fp,explode(',',$country));
- 		fputcsv($fp,explode(',',$st));
-	fclose($fp);
+	    
 		}
 		else{
 		if($nameErr)
