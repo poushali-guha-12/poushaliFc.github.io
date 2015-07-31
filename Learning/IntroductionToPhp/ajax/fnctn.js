@@ -33,7 +33,8 @@ if(document.getElementById("read").checked)
   xmlhttp.send();
   xmlhttp.onreadystatechange=function() {
     if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-      console.log(xmlhttp.responseText);
+	var lbl=document.createElement('lbl');
+	lbl.innerHTML=xmlhttp.responseText;
     }
   }
   // xmlhttp.open("GET","ajax.php",true);
