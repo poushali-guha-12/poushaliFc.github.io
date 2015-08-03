@@ -33,7 +33,7 @@ if(document.getElementById("read").checked)
   xmlhttp.send();
   xmlhttp.onreadystatechange=function() {
     if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-	var lbl=document.createElement('lbl');
+	var lbl=document.createElement('Label');
 	lbl.innerHTML=xmlhttp.responseText;
 	document.appendChild(lbl);
     }
